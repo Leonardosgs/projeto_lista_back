@@ -1,5 +1,16 @@
 package br.com.listando.listando.service;
 
-public class IServiceUsuario {
+import java.util.List;
+
+import br.com.listando.listando.model.entities.Usuario;
+
+public interface IServiceUsuario {
+	public Usuario criarNovoUsuario(Usuario usuario);
+	public Usuario alterarUsuario(Usuario usuario);
+	public void removerUsuario(Usuario usuario);
+	public Usuario buscarPorId(int id);
+	public List<Usuario> verTodos();
+	public List<Usuario> buscarPorChave(String chave);
+	
 
 }

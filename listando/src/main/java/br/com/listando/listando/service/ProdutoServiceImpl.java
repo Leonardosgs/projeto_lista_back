@@ -1,5 +1,6 @@
 package br.com.listando.listando.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,44 +16,42 @@ public class ProdutoServiceImpl implements IServiceProduto{
 	private ProdutoRepository repository;
 
 	@Override
-	public Produto CriarNovoProduto(Produto produto) {
+	public Produto criarNovoProduto(Produto produto) {
 		return repository.save(produto);
 	}
 
 	@Override
-	public Produto AlterarProduto(Produto produto) {
+	public Produto alterarProduto(Produto produto) {
 		return repository.save(produto);
 	}
 
 	@Override
-	public Produto RemoverProduto(Produto produto) {
+	public void removerProduto(Produto produto) {
+		repository.delete(produto);
+	}
+
+	@Override
+	public List<Produto> listarTodos() {
+		List<Produto> lista = new ArrayList<>();
+		repository.findAll().forEach(p -> lista.add(p));
+		return lista;
+	}
+
+	@Override
+	public List<Produto> buscarPorPalavraChave(String key) {
+		return repository.findByNomeContaining(key.substring(0).toUpperCase());
+	}
+
+	@Override
+	public List<Produto> buscarPorUsuarioComPalavraChave(String key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Produto> ListarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+	public Produto buscarPorId(int id) {
+		return repository.findById(id).orElse(null);
 	}
-
-	@Override
-	public List<Produto> BuscarPorPalavraChave(String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Produto> BuscarPorUsuarioComPalavraChave(String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Produto BuscarPorId(int id) {
-		return repository.findById(id).get();
-	}
-
 	
 	
 
