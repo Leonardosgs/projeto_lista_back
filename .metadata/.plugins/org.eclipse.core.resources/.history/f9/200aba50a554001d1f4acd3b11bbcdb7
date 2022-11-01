@@ -1,0 +1,14 @@
+package br.com.listando.listando.repository;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+import br.com.listando.listando.model.entities.Marca;
+import br.com.listando.listando.model.entities.Produto;
+
+public interface ProdutoRepository extends CrudRepository<Produto, Integer> {
+	public List<Produto> findAllByNomeContaining(String s);
+	public List<Produto> findAllByMarca(Marca m);
+
+}

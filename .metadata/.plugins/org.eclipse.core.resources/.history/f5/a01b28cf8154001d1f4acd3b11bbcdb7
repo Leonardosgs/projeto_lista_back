@@ -1,0 +1,10 @@
+package br.com.listey.listey.DAO;
+
+import org.springframework.data.repository.CrudRepository;
+
+import br.com.listey.listey.model.entities.Produto;
+
+public interface ProdutoDAO extends CrudRepository<Produto, Integer>{
+	
+	
+}

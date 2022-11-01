@@ -6,7 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.listando.listando.model.entities.Produto;
+import br.com.listando.listando.models.entities.Produto;
+import br.com.listando.listando.models.entities.Usuario;
 import br.com.listando.listando.repository.ProdutoRepository;
 
 @Component
@@ -17,6 +18,9 @@ public class ProdutoServiceImpl implements IServiceProduto{
 
 	@Override
 	public Produto criarNovoProduto(Produto produto) {
+		if(produto.getNome() == null) {
+			return null;
+		}
 		return repository.save(produto);
 	}
 
@@ -27,11 +31,11 @@ public class ProdutoServiceImpl implements IServiceProduto{
 
 	@Override
 	public void removerProduto(Produto produto) {
-		repository.delete(produto);
+		repository.deleteById(produto.getId());
 	}
 
 	@Override
-	public List<Produto> listarTodos() {
+	public List<Produto> buscarTodos() {
 		List<Produto> lista = new ArrayList<>();
 		repository.findAll().forEach(p -> lista.add(p));
 		return lista;
@@ -39,20 +43,18 @@ public class ProdutoServiceImpl implements IServiceProduto{
 
 	@Override
 	public List<Produto> buscarPorPalavraChave(String key) {
-		return repository.findByNomeContaining(key.substring(0).toUpperCase());
-	}
-
-	@Override
-	public List<Produto> buscarPorUsuarioComPalavraChave(String key) {
-		// TODO Auto-generated method stub
-		return null;
+		return repository.findByNomeContainingIgnoreCase(key.substring(0).toUpperCase());
 	}
 
 	@Override
 	public Produto buscarPorId(int id) {
 		return repository.findById(id).orElse(null);
 	}
-	
+
+	@Override
+	public List<Produto> buscarPorUsuarioEPalavraChave(Usuario usuario, String palavraChave) {
+		return repository.findByUsuarioIdAndNomeContainingIgnoreCase(usuario.getId(), palavraChave);
+	}
 	
 
 }

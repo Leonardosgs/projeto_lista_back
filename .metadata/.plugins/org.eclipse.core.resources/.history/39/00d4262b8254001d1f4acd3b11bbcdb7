@@ -1,0 +1,54 @@
+package br.com.listey.listey.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import br.com.listey.listey.model.entities.Usuario;
+import br.com.listey.listey.repository.UsuarioRepository;
+
+@Component
+public class ServiceUsuarioImpl implements IServiceUsuario {
+	
+	@Autowired
+	private UsuarioRepository repo;
+
+	@Override
+	public Usuario CriarUsuario(Usuario usuario) {
+		return repo.save(usuario);
+	}
+
+	@Override
+	public Usuario AlterarUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Usuario RemoverUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Usuario> ListarTodos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Usuario> BuscarPorNome(String nome) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Usuario BuscarPorId(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+
+}

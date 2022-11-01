@@ -1,0 +1,14 @@
+package br.com.listey.listey.service;
+
+import java.util.List;
+
+public interface IService<E> {
+	
+	public E criarNovo(E e);
+	public void remover(E e);
+	public E alterar(E e);
+	public List<E> listarTodos();
+	public List<E> buscarPorPalavraChave(String key);
+	public E buscarPorId(int id);
+
+}

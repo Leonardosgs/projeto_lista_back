@@ -1,0 +1,33 @@
+package br.com.listando.listando;
+
+import br.com.listando.listando.model.entities.Marca;
+import br.com.listando.listando.model.entities.Produto;
+import br.com.listando.listando.service.MarcaServiceImpl;
+import br.com.listando.listando.service.ProdutoServiceImpl;
+
+public class Te {
+
+	public static void main(String[] args) {
+		MarcaServiceImpl sm = new MarcaServiceImpl();
+		ProdutoServiceImpl sp = new ProdutoServiceImpl();
+		
+		Marca m1 = new Marca("Nestle");
+		Marca m2 = new Marca("Garoto");
+		Produto p1 = new Produto();
+		p1.setNome("Bolacha");
+		p1.setMarca(m1);
+		
+		Produto p2 = new Produto();
+		p2.setNome("Biscoito");
+		p2.setMarca(m2);
+		
+		sm.CriarNovaMarca(m1);
+		sm.CriarNovaMarca(m2);
+		
+		sp.criarNovoProduto(p1);
+		sp.criarNovoProduto(p2);
+		
+		
+	}
+
+}

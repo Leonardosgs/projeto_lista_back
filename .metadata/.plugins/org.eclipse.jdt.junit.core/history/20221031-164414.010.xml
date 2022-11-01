@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MercadoTests" project="listando" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.listando.listando.service.MercadoTests" time="16.207" displayname="MercadoTests" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MercadoTests]">
+    <testcase name="shouldFindById" classname="br.com.listando.listando.service.MercadoTests" time="3.165" displayname="shouldFindById()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MercadoTests]/[method:shouldFindById()]"/>
+    <testcase name="shouldFindByKeyword" classname="br.com.listando.listando.service.MercadoTests" time="2.959" displayname="shouldFindByKeyword()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MercadoTests]/[method:shouldFindByKeyword()]"/>
+    <testcase name="shouldCreateMarket" classname="br.com.listando.listando.service.MercadoTests" time="1.932" displayname="shouldCreateMarket()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MercadoTests]/[method:shouldCreateMarket()]"/>
+    <testcase name="shouldAlterMarket" classname="br.com.listando.listando.service.MercadoTests" time="1.799" displayname="shouldAlterMarket()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MercadoTests]/[method:shouldAlterMarket()]"/>
+    <testcase name="shouldListAll" classname="br.com.listando.listando.service.MercadoTests" time="1.538" displayname="shouldListAll()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MercadoTests]/[method:shouldListAll()]"/>
+    <testcase name="shouldFindByUserAndByKeyword" classname="br.com.listando.listando.service.MercadoTests" time="2.131" displayname="shouldFindByUserAndByKeyword()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MercadoTests]/[method:shouldFindByUserAndByKeyword()]"/>
+    <testcase name="shouldRemoveMarket" classname="br.com.listando.listando.service.MercadoTests" time="2.66" displayname="shouldRemoveMarket()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MercadoTests]/[method:shouldRemoveMarket()]"/>
+  </testsuite>
+</testrun>

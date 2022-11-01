@@ -1,0 +1,14 @@
+package br.com.listando.listando.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.listando.listando.service.IServiceProduto;
+
+@RestController
+public class ProdutoController {
+	
+	@Autowired
+	private IServiceProduto service;
+
+}

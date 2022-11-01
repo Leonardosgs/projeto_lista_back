@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MercadoTests" project="listando" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.listando.listando.service.MercadoTests" time="4.995" displayname="MercadoTests" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MercadoTests]">
+    <testcase name="shouldCreateMarket" classname="br.com.listando.listando.service.MercadoTests" time="2.828" displayname="shouldCreateMarket()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MercadoTests]/[method:shouldCreateMarket()]"/>
+    <testcase name="shouldAlterMarket" classname="br.com.listando.listando.service.MercadoTests" time="2.165" displayname="shouldAlterMarket()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MercadoTests]/[method:shouldAlterMarket()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ItemTests" project="listando" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.listando.listando.service.ItemTests" time="0.322" displayname="ItemTests" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.ItemTests]">
+    <testcase name="shouldCreateItem" classname="br.com.listando.listando.service.ItemTests" time="0.322" displayname="shouldCreateItem()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.ItemTests]/[method:shouldCreateItem()]"/>
+  </testsuite>
+</testrun>

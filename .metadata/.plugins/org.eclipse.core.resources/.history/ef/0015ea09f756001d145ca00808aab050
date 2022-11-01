@@ -1,0 +1,120 @@
+package br.com.listando.listando.entities;
+
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "produtos")
+public class Produto {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "produto_id")
+	private int id;
+	
+	@Column
+	private String nome;
+	
+	@ManyToOne
+	@JoinColumn(name = "marca_id")
+	private Marca marca;
+	
+	@Column(name = "unidade_volume")
+	@Enumerated(EnumType.STRING)
+	private UnidadeVolume unidadeVolume;
+	
+	@Column(name = "volume")
+	private double volume;
+	
+	@ManyToOne
+	@JoinColumn(name = "usuario_id")
+	private Usuario usuario;
+	
+	public Produto() {
+	}
+
+	public Produto(int id, String nome, Marca marca, UnidadeVolume unidade_medida, double quantidade_medida) {
+		this.id = id;
+		this.nome = nome;
+		this.marca = marca;
+		this.unidadeVolume = unidade_medida;
+		this.volume = quantidade_medida;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Marca getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Marca marca) {
+		this.marca = marca;
+	}
+
+	public UnidadeVolume getUnidade_medida() {
+		return unidadeVolume;
+	}
+
+	public void setUnidade_medida(UnidadeVolume unidade_medida) {
+		this.unidadeVolume = unidade_medida;
+	}
+
+	public double getQuantidade_medida() {
+		return volume;
+	}
+
+	public void setQuantidade_medida(double quantidade_medida) {
+		this.volume = quantidade_medida;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produto other = (Produto) obj;
+		return id == other.id;
+	}
+	
+	
+}

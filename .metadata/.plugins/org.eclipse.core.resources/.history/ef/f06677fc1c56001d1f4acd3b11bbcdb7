@@ -1,0 +1,136 @@
+package br.com.listando.listando.service;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
+import br.com.listando.listando.model.entities.Marca;
+import br.com.listando.listando.model.entities.Produto;
+import br.com.listando.listando.model.entities.Usuario;
+
+@SpringBootTest
+//@ActiveProfiles("test")
+public class ProdutoTests {
+	
+	@Autowired
+	private IServiceProduto service;
+	@Autowired
+	private IServiceMarca serviceM;
+	@Autowired
+	private IServiceUsuario serviceU;
+	
+	private static Produto produto1;
+	private static Produto produto2;
+	private static Produto produto3;
+	private static Marca marca;
+	private static Marca marca2;
+	private static List<Produto> listaTeste;
+	private static Usuario usuario;
+	
+	@BeforeAll
+	public static void setupModels() {
+		
+		usuario = new Usuario();
+		usuario.setNome("Carlos");
+		usuario.setEmail("carlos@email.com");
+		usuario.setPassword("12345");
+		
+		marca = new Marca();
+		marca.setNome("Garoto");
+		
+		marca2 = new Marca();
+		marca2.setNome("Nestle");
+		
+		produto1 = new Produto();
+		produto1.setNome("Bolacha");
+		produto1.setMarca(marca);
+		produto1.setId(1);
+		
+		produto2 = new Produto();
+		produto2.setNome("Leite em Pó");
+		produto2.setMarca(marca2);
+		
+		produto3 = new Produto();
+		produto3.setNome("Biscoito");
+		produto3.setMarca(marca);
+		produto3.setUsuario(usuario);
+		
+		
+		listaTeste = new ArrayList<>();
+		
+		listaTeste.add(produto1);
+		listaTeste.add(produto2);
+		
+	}
+	
+	@BeforeEach
+	public void setupServices() {
+		
+		serviceU.criarNovoUsuario(usuario);
+		
+		serviceM.CriarNovaMarca(marca);
+		serviceM.CriarNovaMarca(marca2);
+		
+		service.criarNovoProduto(produto1);
+		service.criarNovoProduto(produto2);
+	}
+	
+	@Test
+	public void shouldRecordProduct() {
+		assertEquals(produto3, service.criarNovoProduto(produto3));
+	}
+	
+	@Test
+	public void shouldAlterProduct() {
+		Produto prod = service.buscarPorId(2);
+		prod.setNome("Chocolate");
+		service.alterarProduto(prod);
+		assertEquals(prod.getNome(), service.alterarProduto(prod).getNome());
+	}
+	
+	@Test
+	public void shouldFindByKeyword() {
+		List<Produto> lista = service.buscarPorPalavraChave("b");
+		assertTrue(lista.contains(produto1));
+	}
+	
+	@Test
+	public void shouldFindById() {
+		assertEquals(produto1, service.buscarPorId(1));
+	}
+	
+	@Test
+	public void shouldRemoveProduct() {
+		service.removerProduto(produto3);
+		assertNull(service.buscarPorId(3));
+	}
+	@Test
+	public void shouldListAll() {
+		List<Produto> lista = service.buscarTodos();
+		assertTrue(lista.containsAll(listaTeste));
+		
+	}
+	
+	@Test
+	public void shouldFindProductByUserAndContainingKeyword() {
+		Usuario user = serviceU.buscarPorId(1);
+		List<Produto> lista = service.buscarProdutoPorUsuarioComPalavraChave(user, "bi");
+		lista.forEach(p -> System.out.println(p.getNome()));
+		assertTrue(lista.contains(produto3));
+	}
+	
+	
+	
+
+}

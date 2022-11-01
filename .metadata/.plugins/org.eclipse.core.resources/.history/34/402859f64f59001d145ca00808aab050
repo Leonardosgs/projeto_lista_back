@@ -1,0 +1,86 @@
+package br.com.listando.listando.service;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.math.BigDecimal;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
+import br.com.listando.listando.entities.Item;
+import br.com.listando.listando.entities.Marca;
+import br.com.listando.listando.entities.Produto;
+import br.com.listando.listando.entities.UnidadeVolume;
+
+@SpringBootTest
+@ActiveProfiles("test")
+public class ItemTests {
+	
+	@Autowired
+	private IServiceItem service;
+	
+	@Autowired
+	private IServiceProduto serviceP;
+	
+	@Autowired
+	private IServiceMarca serviceM;
+	
+	
+	private static Produto p1;
+	private static Produto p2;
+	private static Produto p3;
+	private static Item item;
+	private static Marca m;
+	
+	@BeforeAll
+	public static void setup() {
+		
+		m = new Marca();
+		m.setNome("Nestle");
+		
+		p1 = new Produto();
+		p1.setNome("Bolacha");
+		p1.setMarca(m);
+		p1.setUnidadeVolume(UnidadeVolume.GRAMAS);
+		p1.setVolume(270);
+		p1.setId(1);
+		
+		p2 = new Produto();
+		p2.setNome("Leite em Pó");
+		p2.setMarca(m);
+		p2.setId(2);
+		
+		p3 = new Produto();
+		p3.setNome("Chocolate");
+		p3.setMarca(m);
+		p3.setId(3);
+		
+		item = new Item();
+		item.setProduto(p1);
+		item.setPrecoUnidade(new BigDecimal(2.50));
+		item.setQuantidade(5);
+		
+	}
+	
+	@BeforeEach
+	public void setudServices() {
+		serviceM.criarNovaMarca(m);
+		
+		serviceP.criarNovoProduto(p1);
+		serviceP.criarNovoProduto(p2);
+		serviceP.criarNovoProduto(p3);
+		
+		
+	}
+	
+	@Test
+	public void shouldCreateItem() {
+		assertEquals(item, service.criarNovoItem(item));
+	}
+	
+
+}

@@ -1,0 +1,124 @@
+package br.com.listando.listando.models.entities;
+
+import java.util.Objects;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "produtos")
+public class Produto {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "produto_id")
+	private int id;
+	
+	@Column
+	private String nome;
+	
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "marca_id")
+	private Marca marca;
+	
+	@Column(name = "unidade_volume")
+	@Enumerated(EnumType.STRING)
+	private UnidadeVolume unidadeVolume;
+	
+	@Column(name = "volume")
+	private double volume;
+	
+	@ManyToOne
+	@JoinColumn(name = "usuario_id")
+	private Usuario usuario;
+	
+	public Produto() {
+	}
+
+	public Produto(int id, String nome, Marca marca, UnidadeVolume unidade_medida, double quantidade_medida) {
+		this.id = id;
+		this.nome = nome;
+		this.marca = marca;
+		this.unidadeVolume = unidade_medida;
+		this.volume = quantidade_medida;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Marca getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Marca marca) {
+		this.marca = marca;
+	}
+
+	public UnidadeVolume getUnidadeVolume() {
+		return unidadeVolume;
+	}
+
+	public void setUnidadeVolume(UnidadeVolume unidadeVolume) {
+		this.unidadeVolume = unidadeVolume;
+	}
+
+	public double getVolume() {
+		return volume;
+	}
+
+	public void setVolume(double unidadeVolume) {
+		this.volume = unidadeVolume;
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(nome, unidadeVolume, volume);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produto other = (Produto) obj;
+		return Objects.equals(nome, other.nome) && unidadeVolume == other.unidadeVolume
+				&& Double.doubleToLongBits(volume) == Double.doubleToLongBits(other.volume);
+	}
+
+	
+	
+	
+}

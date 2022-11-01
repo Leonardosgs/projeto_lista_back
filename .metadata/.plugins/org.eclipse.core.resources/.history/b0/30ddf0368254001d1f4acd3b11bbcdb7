@@ -1,0 +1,14 @@
+package br.com.listey.listey.service;
+
+import java.util.List;
+
+import br.com.listey.listey.model.entities.Lista;
+
+public interface IServiceLista {
+	
+	public Lista CriarNovaLista(Lista lista);
+	public Lista AlterarLista(Lista lista);
+	public Lista RemoverLista(Lista lista);
+	public List<Lista> VerTodas();
+	public List<Lista> VerListasPaginadas(int inicio, int intervalo);
+}

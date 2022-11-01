@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MarcaTests" project="listando" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.listando.listando.service.MarcaTests" time="6.764" displayname="MarcaTests" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MarcaTests]">
+    <testcase name="shouldFindById" classname="br.com.listando.listando.service.MarcaTests" time="1.679" displayname="shouldFindById()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MarcaTests]/[method:shouldFindById()]"/>
+    <testcase name="shouldFindByKeyword" classname="br.com.listando.listando.service.MarcaTests" time="1.122" displayname="shouldFindByKeyword()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MarcaTests]/[method:shouldFindByKeyword()]"/>
+    <testcase name="shouldCreateMarca" classname="br.com.listando.listando.service.MarcaTests" time="1.03" displayname="shouldCreateMarca()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MarcaTests]/[method:shouldCreateMarca()]"/>
+    <testcase name="shouldRemoveMarca" classname="br.com.listando.listando.service.MarcaTests" time="1.023" displayname="shouldRemoveMarca()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MarcaTests]/[method:shouldRemoveMarca()]"/>
+    <testcase name="shouldListAll" classname="br.com.listando.listando.service.MarcaTests" time="0.929" displayname="shouldListAll()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MarcaTests]/[method:shouldListAll()]"/>
+    <testcase name="shouldFindByUserAndWithName" classname="br.com.listando.listando.service.MarcaTests" time="0.974" displayname="shouldFindByUserAndWithName()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MarcaTests]/[method:shouldFindByUserAndWithName()]"/>
+  </testsuite>
+</testrun>

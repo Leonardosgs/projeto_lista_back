@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ProdutoTests" project="listando" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.listando.listando.service.ProdutoTests" time="0.74" displayname="ProdutoTests" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.ProdutoTests]">
+    <testcase name="shouldFindById" classname="br.com.listando.listando.service.ProdutoTests" time="0.554" displayname="shouldFindById()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.ProdutoTests]/[method:shouldFindById()]"/>
+    <testcase name="shouldRemove" classname="br.com.listando.listando.service.ProdutoTests" time="0.112" displayname="shouldRemove()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.ProdutoTests]/[method:shouldRemove()]"/>
+    <testcase name="shuoldNotFindById" classname="br.com.listando.listando.service.ProdutoTests" time="0.038" displayname="shuoldNotFindById()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.ProdutoTests]/[method:shuoldNotFindById()]"/>
+    <testcase name="shouldRecordProduct" classname="br.com.listando.listando.service.ProdutoTests" time="0.031" displayname="shouldRecordProduct()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.ProdutoTests]/[method:shouldRecordProduct()]"/>
+  </testsuite>
+</testrun>

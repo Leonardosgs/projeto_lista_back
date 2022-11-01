@@ -1,0 +1,18 @@
+package br.com.listando.listando.entities;
+
+import java.math.BigDecimal;
+
+public class Testes {
+	
+	public static void main(String[] args) {
+		
+		Item item = new Item();
+		Produto p = new Produto();
+		Lista l = new Lista();
+		
+		item.setPrecoUnidade(BigDecimal.valueOf(10,0));
+		item.setQuantidade(4);
+		
+		System.out.println(item.getValor());
+	}
+}

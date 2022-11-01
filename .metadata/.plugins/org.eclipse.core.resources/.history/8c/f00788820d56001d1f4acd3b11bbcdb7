@@ -1,0 +1,15 @@
+package br.com.listando.listando.repository;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+import br.com.listando.listando.model.entities.Marca;
+import br.com.listando.listando.model.entities.Produto;
+import br.com.listando.listando.model.entities.Usuario;
+
+public interface ProdutoRepository extends CrudRepository<Produto, Integer> {
+	public List<Produto> findByNomeContainingIgnoreCase(String s);
+	public List<Marca> findByNomeContainingIgnoreCaseandUsuario(String key, Usuario id);
+
+}

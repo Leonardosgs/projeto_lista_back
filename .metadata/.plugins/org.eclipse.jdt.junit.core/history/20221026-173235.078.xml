@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UsuarioTests" project="listando" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.listando.listando.service.UsuarioTests" time="0.608" displayname="UsuarioTests" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.UsuarioTests]">
+    <testcase name="shouldFindUserByKey" classname="br.com.listando.listando.service.UsuarioTests" time="0.477" displayname="shouldFindUserByKey()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.UsuarioTests]/[method:shouldFindUserByKey()]"/>
+    <testcase name="shouldFindAll" classname="br.com.listando.listando.service.UsuarioTests" time="0.025" displayname="shouldFindAll()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.UsuarioTests]/[method:shouldFindAll()]"/>
+    <testcase name="shouldRemoveUser" classname="br.com.listando.listando.service.UsuarioTests" time="0.052" displayname="shouldRemoveUser()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.UsuarioTests]/[method:shouldRemoveUser()]"/>
+    <testcase name="shouldCreateUser" classname="br.com.listando.listando.service.UsuarioTests" time="0.01" displayname="shouldCreateUser()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.UsuarioTests]/[method:shouldCreateUser()]"/>
+    <testcase name="shouldFindUserById" classname="br.com.listando.listando.service.UsuarioTests" time="0.013" displayname="shouldFindUserById()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.UsuarioTests]/[method:shouldFindUserById()]"/>
+    <testcase name="shouldAlterUser" classname="br.com.listando.listando.service.UsuarioTests" time="0.022" displayname="shouldAlterUser()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.UsuarioTests]/[method:shouldAlterUser()]"/>
+  </testsuite>
+</testrun>

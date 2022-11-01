@@ -1,0 +1,54 @@
+package br.com.listando.listando.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import br.com.listando.listando.entities.Mercado;
+import br.com.listando.listando.entities.Usuario;
+import br.com.listando.listando.repository.MercadoRepository;
+
+@Component
+public class MercadoServiceImpl implements IServiceMercado{
+
+	@Autowired
+	private MercadoRepository repo;
+	
+	@Override
+	public Mercado criarNovaMercado(Mercado mercado) {
+		return repo.save(mercado);
+	}
+
+	@Override
+	public void removerMercado(Mercado mercado) {
+		repo.delete(mercado);
+		
+	}
+
+	@Override
+	public List<Mercado> listarTodos() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Mercado> buscarPorPalavraChave(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Mercado> buscarMercadoPorUsuarioEComNome(Usuario user, String nome) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mercado buscarPorId(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

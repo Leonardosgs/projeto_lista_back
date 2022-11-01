@@ -1,41 +1,52 @@
 package br.com.listando.listando.service;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ActiveProfiles;
 
-import br.com.listando.listando.model.entities.Marca;
-import br.com.listando.listando.model.entities.Produto;
+import br.com.listando.listando.models.entities.Marca;
+import br.com.listando.listando.models.entities.Produto;
+import br.com.listando.listando.models.entities.UnidadeVolume;
+import br.com.listando.listando.models.entities.Usuario;
 
 @SpringBootTest
 @ActiveProfiles("test")
+@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
 public class ProdutoTests {
 	
 	@Autowired
 	private IServiceProduto service;
 	@Autowired
 	private IServiceMarca serviceM;
-	//private static ProdutoServiceImpl service;
-	private static Integer idFound = 1;
-	private static Integer IdNotFound = 100;
-	private static Produto produto;
+	@Autowired
+	private IServiceUsuario serviceU;
+	
+	private static Produto produto1;
 	private static Produto produto2;
+	private static Produto produto3;
 	private static Marca marca;
 	private static Marca marca2;
-	private static Produto produtoCriado;
-	private static List<Produto> lista2;
+	private static List<Produto> listaTeste;
+	private static Usuario usuario;
 	
 	@BeforeAll
-	public static void setup() {
+	public static void setupModels() {
+		
+		usuario = new Usuario();
+		usuario.setNome("Pedro");
+		usuario.setEmail("pedro@email.com");
+		usuario.setPassword("12345");
 		
 		marca = new Marca();
 		marca.setNome("Garoto");
@@ -43,82 +54,87 @@ public class ProdutoTests {
 		marca2 = new Marca();
 		marca2.setNome("Nestle");
 		
-		produto = new Produto();
-		produto.setNome("Bolacha");
-		produto.setMarca(marca);
-		
-		produtoCriado = new Produto();
-		produtoCriado.setNome("Bolacha");
-		produtoCriado.setId(1);
-		
+		produto1 = new Produto();
+		produto1.setNome("Bolacha");
+		produto1.setMarca(marca);
+		produto1.setUnidadeVolume(UnidadeVolume.GRAMAS);
+		produto1.setUsuario(usuario);
+		produto1.setVolume(270);
+		produto1.setId(1);
 		
 		produto2 = new Produto();
 		produto2.setNome("Leite em Pó");
 		produto2.setMarca(marca2);
+		produto2.setId(2);
 		
-		lista2 = new ArrayList<>();
+		produto3 = new Produto();
+		produto3.setNome("Biscoito");
+		produto3.setMarca(marca);
+		produto3.setId(3);
 		
-		lista2.add(produto);
-		lista2.add(produto2);
 		
-//		service = Mockito.mock(ProdutoServiceImpl.class);
-//		Mockito.when(service.criarNovoProduto(newProduct)).thenReturn(createdProduct);
-//		Mockito.when(service.buscarPorId(idFound)).thenReturn(createdProduct);
-//		Mockito.when(service.buscarPorId(IdNotFound)).thenReturn(null);
-//		Mockito.when(service.buscarPorPalavraChave("b")).thenReturn(new ArrayList<Produto>());
-//		Mockito.when(service.listarTodos()).thenReturn(new ArrayList<Produto>());
-//		Mockito.when(service.alterarProduto(createdProduct)).thenReturn(createdProduct);
+	}
+	
+	@BeforeEach
+	public void setupServices() {
+		serviceU.criarNovoUsuario(usuario);
+		
+		serviceM.criarNovaMarca(marca);
+		serviceM.criarNovaMarca(marca2);
+		
+		service.criarNovoProduto(produto1);
+		service.criarNovoProduto(produto2);
+		service.criarNovoProduto(produto3);
+		
+		listaTeste = service.buscarTodos();
 	}
 	
 	@Test
-	public void shouldRecordProduct() {
-		serviceM.CriarNovaMarca(marca2);
-		assertNotNull(service.criarNovoProduto(produto2));
-	}
-	
-	
-	@Test
-	public void shouldFindById() {
-		serviceM.CriarNovaMarca(marca);
-		service.criarNovoProduto(produto);
-		assertNotNull(service.buscarPorId(idFound));
+	public void shouldCreateProduct() {
+		Produto p = new Produto();
+		p.setNome("Leite");
+		p.setMarca(marca);
+		p.setId(4);
+		assertEquals(p, service.criarNovoProduto(p));
+		service.removerProduto(p);
 	}
 	
 	@Test
-	public void shuoldNotFindById() {
-		serviceM.CriarNovaMarca(marca);
-		service.criarNovoProduto(produto);
-		assertNull(service.buscarPorId(IdNotFound));
-	}
-	
-	@Test
-	public void shouldRemove() {
-		serviceM.CriarNovaMarca(marca);
-		service.criarNovoProduto(produto);
-		service.removerProduto(produto);
-		assertNull(service.buscarPorId(idFound));
+	public void shouldAlterProduct() {
+		Produto prod = service.buscarPorId(1);
+		prod.setNome("Chocolate");
+		service.alterarProduto(prod);
+		assertEquals(prod.getNome(), service.alterarProduto(prod).getNome());
 	}
 	
 	@Test
 	public void shouldFindByKeyword() {
-		serviceM.CriarNovaMarca(marca);
-		serviceM.CriarNovaMarca(marca2);
-		service.criarNovoProduto(produto);
-		service.criarNovoProduto(produto2);
 		List<Produto> lista = service.buscarPorPalavraChave("b");
-		assertTrue(lista.contains(produto));
+		assertTrue(lista.contains(produto1));
 	}
 	
 	@Test
+	public void shouldFindById() {
+		assertEquals(produto1, service.buscarPorId(1));
+	}
+	
+	@Test
+	public void shouldRemoveProduct() {
+		service.removerProduto(produto3);
+		assertNull(service.buscarPorId(3));
+	}
+	@Test
 	public void shouldListAll() {
-		serviceM.CriarNovaMarca(marca);
-		serviceM.CriarNovaMarca(marca2);
-		service.criarNovoProduto(produto);
-		service.criarNovoProduto(produto2);
-		List<Produto> lista = service.listarTodos();
-		assertTrue(lista.containsAll(lista2));
+		List<Produto> lista = service.buscarTodos();
+		assertTrue(lista.containsAll(listaTeste));
 		
 	}
+	
+	@Test
+	public void shouldFindProductByUserAndByKeyword() {
+		assertTrue(service.buscarPorUsuarioEPalavraChave(usuario, "bo").contains(produto1));
+	}
+	
 	
 
 }

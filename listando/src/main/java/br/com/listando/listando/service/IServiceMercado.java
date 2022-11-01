@@ -1,5 +1,24 @@
 package br.com.listando.listando.service;
 
+import java.util.List;
+
+import br.com.listando.listando.models.entities.Mercado;
+import br.com.listando.listando.models.entities.Usuario;
+
 public interface IServiceMercado {
+	
+	public Mercado criarNovoMercado(Mercado mercado);
+	
+	public Mercado alterarMercado(Mercado mercado);
+
+	public void removerMercado(Mercado mercado);
+
+	public List<Mercado> listarTodos();
+
+	public List<Mercado> buscarPorPalavraChave(String key);
+
+	public List<Mercado> buscarMercadoPorUsuarioEComPalvraChave(Usuario user, String palavraChave);
+
+	public Mercado buscarPorId(int id);
 
 }

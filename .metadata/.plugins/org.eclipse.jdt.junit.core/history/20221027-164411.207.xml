@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MarcaTests.shouldCreateMarca" project="listando" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.listando.listando.service.MarcaTests" time="0.406" displayname="MarcaTests" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MarcaTests]">
+    <testcase name="shouldCreateMarca" classname="br.com.listando.listando.service.MarcaTests" time="0.406" displayname="shouldCreateMarca()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MarcaTests]/[method:shouldCreateMarca()]"/>
+  </testsuite>
+</testrun>

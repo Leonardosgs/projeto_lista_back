@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="ProdutoTests" project="listando" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.listando.listando.service.ProdutoTests" time="1.066" displayname="ProdutoTests" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.ProdutoTests]">
+    <testcase name="shouldFindById" classname="br.com.listando.listando.service.ProdutoTests" time="0.635" displayname="shouldFindById()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.ProdutoTests]/[method:shouldFindById()]"/>
+    <testcase name="shouldRemoveProduct" classname="br.com.listando.listando.service.ProdutoTests" time="0.082" displayname="shouldRemoveProduct()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.ProdutoTests]/[method:shouldRemoveProduct()]"/>
+    <testcase name="shouldFindProductByUserAndContainingKeyword" classname="br.com.listando.listando.service.ProdutoTests" time="0.109" displayname="shouldFindProductByUserAndContainingKeyword()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.ProdutoTests]/[method:shouldFindProductByUserAndContainingKeyword()]"/>
+    <testcase name="shouldListAll" classname="br.com.listando.listando.service.ProdutoTests" time="0.063" displayname="shouldListAll()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.ProdutoTests]/[method:shouldListAll()]"/>
+    <testcase name="ShouldFindByKeyword" classname="br.com.listando.listando.service.ProdutoTests" time="0.064" displayname="ShouldFindByKeyword()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.ProdutoTests]/[method:ShouldFindByKeyword()]"/>
+    <testcase name="ShouldAlterProduct" classname="br.com.listando.listando.service.ProdutoTests" time="0.06" displayname="ShouldAlterProduct()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.ProdutoTests]/[method:ShouldAlterProduct()]"/>
+    <testcase name="ShouldCreateProduct" classname="br.com.listando.listando.service.ProdutoTests" time="0.042" displayname="ShouldCreateProduct()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.ProdutoTests]/[method:ShouldCreateProduct()]"/>
+  </testsuite>
+</testrun>

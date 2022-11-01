@@ -1,0 +1,5 @@
+package br.com.listando.listando.model.entities;
+
+public class Item {
+
+}

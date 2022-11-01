@@ -1,0 +1,13 @@
+package br.com.listey.listey.service;
+
+import java.util.List;
+
+import br.com.listey.listey.model.entities.Produto;
+
+public interface IProdutoService {
+	public Produto criarNovoProduto(Produto produto);
+	public Produto alterarProduto(Produto produto);
+	public List<Produto> listarTodos();
+	public List<Produto> buscarPorPalavraChave(String key);
+	public Produto buscarPorId(int id);
+}

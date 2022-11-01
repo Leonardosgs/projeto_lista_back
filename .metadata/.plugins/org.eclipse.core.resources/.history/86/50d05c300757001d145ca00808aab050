@@ -1,0 +1,12 @@
+package br.com.listando.listando.service;
+
+import java.util.List;
+
+import br.com.listando.listando.entities.Item;
+
+public interface IServiceItem {
+	
+	public Item buscarItemPorId();
+	public void removerItem();
+	public List<Item> listarItensPorLista();
+}

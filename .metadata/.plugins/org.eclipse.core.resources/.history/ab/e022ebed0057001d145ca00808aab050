@@ -1,0 +1,73 @@
+package br.com.listando.listando.service;
+
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
+import org.springframework.test.context.ActiveProfiles;
+
+import br.com.listando.listando.entities.Lista;
+import br.com.listando.listando.entities.Mercado;
+import br.com.listando.listando.entities.Usuario;
+
+@SpringBootTest
+@ActiveProfiles("test")
+@DirtiesContext(classMode = ClassMode.BEFORE_EACH_TEST_METHOD)
+public class ListaTests {
+	
+	@Autowired
+	private IServiceLista service;
+	
+	@Autowired
+	private IServiceMercado serviceM;
+	
+	@Autowired
+	private IServiceUsuario serviceU;
+	
+	private static Lista lista1;
+	private static Lista lista2;
+	private static Lista lista3;
+	private static List<Lista> listListaTeste;
+	private static Mercado mercado;
+	private static Usuario usuario;
+	
+	@BeforeAll
+	public static void setup() {
+		
+		mercado = new Mercado();
+		mercado.setNome("Confiança");
+		
+		usuario = new Usuario();
+		usuario.setNome("Pedro");
+		usuario.setEmail("pedro@email.com");
+		usuario.setPassword("12345");
+		usuario.setId(1);
+		
+		lista1 = new Lista();
+		lista1.setNome("Minha Lista");
+		lista1.setMercado(mercado);
+		lista1.setUsuario(usuario);
+		
+		lista2 = new Lista();
+		lista2.setNome("Minha Lista2");
+		lista2.setUsuario(usuario);
+		
+		lista3 = new Lista();
+		lista3.setNome("Minha Lista3");
+		lista3.setMercado(mercado);
+		lista3.setUsuario(usuario);
+		
+		
+	}
+	
+	@Test
+	public void shouldCreateList() {
+		
+	}
+	
+
+}

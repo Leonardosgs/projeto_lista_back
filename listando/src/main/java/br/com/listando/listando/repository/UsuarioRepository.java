@@ -1,9 +1,14 @@
 package br.com.listando.listando.repository;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.repository.CrudRepository;
 
-import br.com.listando.listando.model.entities.Usuario;
+import br.com.listando.listando.models.entities.Usuario;
 
 public interface UsuarioRepository extends CrudRepository<Usuario, Integer>{
+	public List<Usuario> findByNomeContainingIgnoreCase(String chave);
+	public Optional<Usuario> findByEmail(String email);
 
 }

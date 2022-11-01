@@ -1,0 +1,13 @@
+package br.com.listando.listando.entities;
+
+public enum MedidaUnidade {
+	
+	MILILITROS,
+	LITROS,
+	GRAMAS,
+	KILOGRAMAS,
+	CENTIMETRO,
+	METROS;
+	
+
+}

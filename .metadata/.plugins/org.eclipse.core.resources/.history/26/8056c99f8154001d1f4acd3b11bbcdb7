@@ -1,0 +1,13 @@
+package br.com.listey.listey.model;
+
+public enum MedidaUnidade {
+	
+	MILILITROS,
+	LITROS,
+	GRAMAS,
+	KILOGRAMAS,
+	CENTIMETRO,
+	METROS;
+	
+
+}

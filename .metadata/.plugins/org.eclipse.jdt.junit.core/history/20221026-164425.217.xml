@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UsuarioTests" project="listando" tests="4" started="4" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.listando.listando.service.UsuarioTests" time="0.393" displayname="UsuarioTests" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.UsuarioTests]">
+    <testcase name="should1CreateUser" classname="br.com.listando.listando.service.UsuarioTests" time="0.329" displayname="should1CreateUser()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.UsuarioTests]/[method:should1CreateUser()]"/>
+    <testcase name="should2AlterUser" classname="br.com.listando.listando.service.UsuarioTests" time="0.029" displayname="should2AlterUser()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.UsuarioTests]/[method:should2AlterUser()]"/>
+    <testcase name="should2FindUserById" classname="br.com.listando.listando.service.UsuarioTests" time="0.005" displayname="should2FindUserById()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.UsuarioTests]/[method:should2FindUserById()]"/>
+    <testcase name="should3RemoveUser" classname="br.com.listando.listando.service.UsuarioTests" time="0.026" displayname="should3RemoveUser()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.UsuarioTests]/[method:should3RemoveUser()]"/>
+  </testsuite>
+</testrun>

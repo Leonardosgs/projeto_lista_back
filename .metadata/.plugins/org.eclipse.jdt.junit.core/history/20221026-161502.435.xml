@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="UsuarioTests" project="listando" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.listando.listando.service.UsuarioTests" time="0.328" displayname="UsuarioTests" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.UsuarioTests]">
+    <testcase name="shouldCreateUser" classname="br.com.listando.listando.service.UsuarioTests" time="0.294" displayname="shouldCreateUser()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.UsuarioTests]/[method:shouldCreateUser()]"/>
+    <testcase name="shouldAlterUser" classname="br.com.listando.listando.service.UsuarioTests" time="0.032" displayname="shouldAlterUser()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.UsuarioTests]/[method:shouldAlterUser()]"/>
+  </testsuite>
+</testrun>

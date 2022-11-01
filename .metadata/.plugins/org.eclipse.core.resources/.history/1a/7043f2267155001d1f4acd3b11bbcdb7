@@ -1,0 +1,110 @@
+package br.com.listando.listando.service;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.FixMethodOrder;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.runners.MethodSorters;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
+import br.com.listando.listando.model.entities.Usuario;
+
+@SpringBootTest
+@ActiveProfiles("test")
+public class UsuarioTests {
+	
+	@Autowired
+	private IServiceUsuario service;
+	
+	private static Usuario user1;
+	private static Usuario user2;
+	private static Usuario user3;
+	private static List<Usuario> listaTeste;
+	
+	
+	@BeforeAll
+	public static void setup() {
+		
+		user1 = new Usuario();
+		user1.setNome("Carlos");
+		user1.setEmail("carlos@email.com");
+		user1.setPassword("12345");
+		user1.setId(1);
+		
+		user2 = new Usuario();
+		user2.setNome("Pedro");
+		user2.setEmail("pedro@email.com");
+		user2.setPassword("#Pedro1234_");
+		user2.setId(2);
+		
+		user3 = new Usuario();
+		user3.setNome("Fernanda");
+		user3.setEmail("fernanda@email.com");
+		user3.setPassword("fernanda12345");
+		
+		listaTeste = new ArrayList<>();
+		listaTeste.add(user1);
+		listaTeste.add(user2);
+		listaTeste.add(user3);
+
+	}
+	
+	@Test
+	public void shouldCreateUser() {
+		service.criarNovoUsuario(user1);
+		assertNotNull(service.buscarPorId(1));
+	}
+	
+	@Test
+	public void shouldAlterUser() {
+		service.criarNovoUsuario(user1);
+		Usuario u = service.buscarPorId(1);
+		u.setNome("Joao");
+		service.alterarUsuario(u);
+		assertEquals("Joao", service.buscarPorId(1).getNome());
+	}
+	
+	@Test
+	public void shouldRemoveUser() {
+		service.criarNovoUsuario(user1);
+		service.criarNovoUsuario(user2);
+		service.criarNovoUsuario(user3);
+		service.removerUsuario(user3);
+		assertNull(service.buscarPorId(3));
+	}
+	
+	@Test
+	public void shouldFindUserById() {
+		service.criarNovoUsuario(user1);
+		assertEquals(user1.getEmail(), service.buscarPorId(1).getEmail());
+	}
+	
+	@Test
+	public void shouldFindAll() {
+		service.criarNovoUsuario(user1);
+		service.criarNovoUsuario(user2);
+		service.criarNovoUsuario(user3);
+		List<Usuario> lista = service.buscarTodos();
+		assertTrue(lista.containsAll(listaTeste));
+	}
+	
+	@Test
+	public void shouldFindUserByKey() {
+		service.criarNovoUsuario(user1);
+		service.criarNovoUsuario(user2);
+		service.criarNovoUsuario(user3);
+		assertTrue(service.buscarUsuarioPorChave("Ca").contains(user1));
+		
+	}
+	
+
+}

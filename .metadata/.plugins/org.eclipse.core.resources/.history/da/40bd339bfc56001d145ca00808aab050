@@ -1,0 +1,9 @@
+package br.com.listando.listando.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import br.com.listando.listando.entities.Lista;
+
+public interface ListaRepository extends CrudRepository<Lista, Integer>{
+
+}

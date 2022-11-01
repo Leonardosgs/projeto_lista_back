@@ -1,0 +1,46 @@
+package br.com.listando.listando.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import br.com.listando.listando.model.entities.Lista;
+import br.com.listando.listando.repository.ListaRepository;
+
+@Component
+public class ListaServiceImpl implements IServiceLista{
+	
+	@Autowired
+	private ListaRepository repo; 
+	
+	@Override
+	public Lista CriarNovaLista(Lista lista) {
+		return repo.save(lista);
+	}
+
+	@Override
+	public Lista AlterarLista(Lista lista) {
+		return null;
+	}
+
+	@Override
+	public Lista RemoverLista(Lista lista) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Lista> VerTodas() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Lista> VerListasPaginadas(int inicio, int intervalo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

@@ -1,0 +1,24 @@
+package br.com.listando.listando.entities;
+
+public enum UnidadeVolume {
+	
+	MILILITROS("ml"),
+	LITROS("L"),
+	GRAMAS("g"),
+	KILOGRAMAS("Kg"),
+	CENTIMETRO("cm"),
+	METROS("m"),
+	UNIDADES("unidade");
+	
+	private String abreviacao;
+	
+	UnidadeVolume(String abreviacao) {
+		this.abreviacao = abreviacao;
+	}
+	
+	public String getAbreviacao() {
+		return abreviacao;
+	}
+	
+
+}

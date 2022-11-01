@@ -1,0 +1,14 @@
+package br.com.listey.listey.service;
+
+import java.util.List;
+
+import br.com.listey.listey.model.entities.Lista;
+
+public interface IListaService {
+	
+	public Lista criarNovaLista(Lista lista);
+	public Lista alterarLista(Lista lista);
+	public void excluirLista(Lista lista);
+	public List<Lista> buscarListaPorUsuario();
+
+}

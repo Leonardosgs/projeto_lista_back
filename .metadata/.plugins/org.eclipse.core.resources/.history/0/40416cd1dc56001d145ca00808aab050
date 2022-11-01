@@ -1,0 +1,108 @@
+package br.com.listando.listando.service;
+
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import br.com.listando.listando.entities.Marca;
+import br.com.listando.listando.entities.Usuario;
+
+@SpringBootTest
+//@ActiveProfiles("Test")
+public class MarcaTests {
+
+	@Autowired
+	private IServiceMarca service;
+
+	@Autowired
+	private IServiceUsuario serviceU;
+
+	private static Marca marca1;
+	private static Marca marca2;
+	private static Marca marca3;
+	private static List<Marca> listaTeste;
+	private static Usuario usuario;
+
+	@BeforeAll
+	public static void setupMdels() {
+
+		usuario = new Usuario();
+		usuario.setNome("Pedro");
+		usuario.setEmail("pedro@email.com");
+		usuario.setPassword("12345");
+
+		marca1 = new Marca();
+		marca1.setNome("Nestle");
+		marca1.setUsuario(usuario);
+		marca1.setId(1);
+		System.out.println("Executando o brforeall");
+		marca2 = new Marca();
+		marca2.setNome("Garoto");
+		marca2.setId(2);
+
+		marca3 = new Marca();
+		marca3.setNome("Alpino");
+		marca3.setId(3);
+
+	}
+	
+	@BeforeAll
+	public void setupServices() {
+
+		usuario = serviceU.criarNovoUsuario(usuario);
+
+		service.criarNovaMarca(marca1);
+		service.criarNovaMarca(marca2);
+		service.criarNovaMarca(marca3);
+
+		listaTeste = service.listarTodos();
+
+	}
+
+	@Test
+	public void shouldCreateMarca() {
+		Marca marca4 = new Marca("Seara");
+		assertEquals(marca4, service.criarNovaMarca(marca4));
+	}
+
+	@Test
+	public void shouldRemoveMarca() {
+		service.removerMarca(marca3);
+		assertNull(service.buscarPorId(3));
+	}
+
+	@Test
+	public void shouldFindById() {
+		assertEquals(marca1, service.buscarPorId(1));
+	}
+
+	@Test
+	public void shouldListAll() {
+		assertTrue(service.listarTodos().containsAll(listaTeste));
+	}
+
+	@Test
+	public void shouldFindByKeyword() {
+		List<Marca> lista = service.buscarPorPalavraChave("n");
+		assertTrue(lista.contains(marca1));
+		;
+	}
+
+	@Test
+	public void shouldFindByUserAndWithName() {
+		Usuario user = serviceU.buscarPorId(1);
+		System.out.println(user.getNome());
+		List<Marca> lista = service.buscarMarcaPorUsuarioEComNome(user, "nes");
+		lista.forEach(p -> System.out.println(p.getNome()));
+		assertTrue(lista.contains(marca1));
+	}
+}

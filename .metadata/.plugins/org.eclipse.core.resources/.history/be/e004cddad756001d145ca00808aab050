@@ -1,0 +1,14 @@
+package br.com.listando.listando.repository;
+
+import java.util.List;
+
+import org.springframework.data.repository.CrudRepository;
+
+import br.com.listando.listando.entities.Marca;
+import br.com.listando.listando.entities.Usuario;
+
+public interface MarcaRepository extends CrudRepository<Marca, Integer> {
+	public List<Marca> findByNomeContainingIgnoreCase(String key);
+	public List<Marca> findByUsuarioIdAndNomeContaining(Integer usuarioId, String nome);
+
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MercadoTests.shouldRemoveMarket" project="listando" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.listando.listando.service.MercadoTests" time="2.752" displayname="MercadoTests" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MercadoTests]">
+    <testcase name="shouldRemoveMarket" classname="br.com.listando.listando.service.MercadoTests" time="2.752" displayname="shouldRemoveMarket()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MercadoTests]/[method:shouldRemoveMarket()]"/>
+  </testsuite>
+</testrun>

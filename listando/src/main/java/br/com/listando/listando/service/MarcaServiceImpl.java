@@ -5,7 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.listando.listando.model.entities.Marca;
+import br.com.listando.listando.models.entities.Marca;
+import br.com.listando.listando.models.entities.Produto;
+import br.com.listando.listando.models.entities.Usuario;
 import br.com.listando.listando.repository.MarcaRepository;
 
 @Component
@@ -15,38 +17,37 @@ public class MarcaServiceImpl implements IServiceMarca{
 	private MarcaRepository repo;
 
 	@Override
-	public Marca CriarNovaMarca(Marca marca) {
+	public Marca criarNovaMarca(Marca marca) {
 		return repo.save(marca);
 	}
 
 	@Override
-	public void RemoverMarca(Marca marca) {
-		// TODO Auto-generated method stub
-		
+	public void removerMarca(Marca marca) {
+		repo.deleteById(marca.getId());
+	}
+	
+
+	@Override
+	public Marca buscarPorId(int id) {
+		return repo.findById(id).orElse(null);
 	}
 
 	@Override
-	public List<Marca> ListarTodos() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Marca> listarTodos() {
+		return (List<Marca>) repo.findAll();
 	}
 
 	@Override
-	public List<Marca> BuscarPorPalavraChave(String key) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Marca> buscarPorPalavraChave(String key) {
+		return repo.findByNomeContainingIgnoreCase(key);
 	}
 
 	@Override
-	public List<Marca> BuscarPorUsuarioComPalavraChave(String key) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Marca> buscarMarcaPorUsuarioEComNome(Usuario user, String nome) {
+		List<Marca> lista = repo.findByUsuarioIdAndNomeContainingIgnoreCase(user.getId(), nome);
+		return lista;
 	}
 
-	@Override
-	public Marca BuscarPorId(int id) {
-		return repo.findById(id).get();
-	}
 
 	
 

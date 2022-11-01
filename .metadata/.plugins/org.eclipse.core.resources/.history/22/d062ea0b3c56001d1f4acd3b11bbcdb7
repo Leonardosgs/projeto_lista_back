@@ -1,0 +1,73 @@
+package br.com.listando.listando.service;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
+import br.com.listando.listando.entities.Marca;
+
+@SpringBootTest
+@ActiveProfiles("Test")
+public class MarcaTests {
+	
+	@Autowired
+	private IServiceMarca service;	
+	
+	private static Marca marca1;
+	private static Marca marca2;
+	private static Marca marca3;
+	
+	@BeforeAll
+	public static void setupMdels() {
+		
+		marca1 = new Marca();
+		marca1.setNome("Nestle");
+		marca1.setId(1);
+		
+		marca2 = new Marca();
+		marca2.setNome("Garoto");
+		marca2.setId(2);
+		
+		marca3 = new Marca();
+		marca3.setNome("Alpino");
+		marca3.setId(3);
+		
+		List<Marca> listaTeste = new ArrayList<>();
+	}
+	
+	@BeforeEach
+	public void setupServices() {
+
+		service.CriarNovaMarca(marca1);
+		service.CriarNovaMarca(marca2);
+		service.CriarNovaMarca(marca3);
+		
+	}
+	
+	@Test
+	public void shouldCreateMarca() {
+		Marca marca4 = new Marca("Seara");
+		assertEquals(marca4, service.CriarNovaMarca(marca4));
+	}
+	
+	@Test
+	public void shouldRemoveMarca() {
+		service.RemoverMarca(marca3);
+		assertNull(service.BuscarPorId(3));
+	}
+	
+	@Test
+	public void shouldFindById() {
+		assertEquals(marca1, service.BuscarPorId(1));
+	}
+}

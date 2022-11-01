@@ -1,0 +1,17 @@
+package br.com.listando.listando.service;
+
+import java.util.List;
+
+import br.com.listando.listando.entities.Marca;
+import br.com.listando.listando.entities.Usuario;
+
+public interface IServiceMarca {
+	
+	public Marca criarNovaMarca(Marca marca);
+	public void removerMarca (Marca marca);
+	public List<Marca> listarTodos();
+	public List<Marca> buscarPorPalavraChave(String key);
+	public List<Marca> buscarMarcaPorUsuarioComPalavraChave(Usuario user, String nome);
+	public Marca buscarPorId(int id);
+
+}

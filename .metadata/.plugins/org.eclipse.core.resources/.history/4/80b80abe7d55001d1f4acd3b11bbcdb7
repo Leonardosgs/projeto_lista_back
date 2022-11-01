@@ -1,0 +1,112 @@
+package br.com.listando.listando.service;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
+import br.com.listando.listando.model.entities.Marca;
+import br.com.listando.listando.model.entities.Produto;
+
+@SpringBootTest
+@ActiveProfiles("test")
+public class ProdutoTests {
+	
+	@Autowired
+	private IServiceProduto service;
+	@Autowired
+	private IServiceMarca serviceM;
+	
+	private static Produto produto;
+	private static Produto produto2;
+	private static Marca marca;
+	private static Marca marca2;
+	private static Produto produto3;
+	private static List<Produto> listaTeste;
+	
+	@BeforeAll
+	public static void setup() {
+		
+		marca = new Marca();
+		marca.setNome("Garoto");
+		
+		marca2 = new Marca();
+		marca2.setNome("Nestle");
+		
+		produto = new Produto();
+		produto.setNome("Bolacha");
+		produto.setMarca(marca);
+		
+		produto2 = new Produto();
+		produto2.setNome("Leite em Pó");
+		produto2.setMarca(marca2);
+		
+		produto3 = new Produto();
+		produto3.setNome("Bolacha");
+		produto3.setMarca(marca2);
+		
+		
+		listaTeste = new ArrayList<>();
+		
+		listaTeste.add(produto);
+		listaTeste.add(produto2);
+		
+	}
+	
+	@Test
+	public void shouldRecordProduct() {
+		serviceM.CriarNovaMarca(marca);
+		assertNotNull(service.criarNovoProduto(produto));
+	}
+	
+	@Test
+	public void shouldAlterProduct() {
+		Produto prod = service.buscarPorId(1);
+		prod.setNome("Chocolate");
+		service.alterarProduto(prod);
+		System.out.println(prod.getNome());
+	}
+	
+	@Test
+	public void shouldFindByKeyword() {
+		serviceM.CriarNovaMarca(marca2);
+		service.criarNovoProduto(produto2);
+		List<Produto> lista = service.buscarPorPalavraChave("lei");
+		assertTrue(lista.contains(produto2));
+	}
+	
+	@Test
+	public void shouldFindById() {
+		serviceM.CriarNovaMarca(marca);
+		service.criarNovoProduto(produto);
+		assertNotNull(service.buscarPorId(1));
+	}
+	
+	@Test
+	public void shouldRemoveProduct() {
+		service.removerProduto(produto3);
+		assertNull(service.buscarPorId(3));
+	}
+	@Test
+	public void shouldListAll() {
+		serviceM.CriarNovaMarca(marca);
+		serviceM.CriarNovaMarca(marca2);
+		service.criarNovoProduto(produto);
+		service.criarNovoProduto(produto2);
+		List<Produto> lista = service.buscarTodos();
+		assertTrue(lista.containsAll(listaTeste));
+		
+	}
+	
+	
+	
+
+}

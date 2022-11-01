@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MarcaTests" project="listando" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="br.com.listando.listando.service.MarcaTests" time="0.381" displayname="MarcaTests" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MarcaTests]">
+    <testcase name="shouldFindById" classname="br.com.listando.listando.service.MarcaTests" time="0.325" displayname="shouldFindById()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MarcaTests]/[method:shouldFindById()]"/>
+    <testcase name="shouldCreateMarca" classname="br.com.listando.listando.service.MarcaTests" time="0.019" displayname="shouldCreateMarca()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MarcaTests]/[method:shouldCreateMarca()]"/>
+    <testcase name="shouldRemoveMarca" classname="br.com.listando.listando.service.MarcaTests" time="0.035" displayname="shouldRemoveMarca()" uniqueid="[engine:junit-jupiter]/[class:br.com.listando.listando.service.MarcaTests]/[method:shouldRemoveMarca()]"/>
+  </testsuite>
+</testrun>

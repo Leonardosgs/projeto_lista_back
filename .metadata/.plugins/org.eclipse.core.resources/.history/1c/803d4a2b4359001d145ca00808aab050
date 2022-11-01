@@ -1,0 +1,105 @@
+package br.com.listando.listando.entities;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "listas")
+public class Lista {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "lista_id")
+	private int id;
+
+	private String nome;
+
+	@Column(name = "preco_total")
+	private BigDecimal precoTotal = BigDecimal.ZERO;
+
+	@Column(name = "data_criacao")
+	private LocalDate dataCriacao = LocalDate.now();
+
+	@ManyToOne
+	@JoinColumn(name = "usuario_id")
+	private Usuario usuario;
+
+	@OneToMany(mappedBy = "lista", cascade = CascadeType.ALL)
+	private List<Item> listaItens = new ArrayList<Item>();
+
+	@ManyToOne
+	@JoinColumn(name = "mercado_id")
+	private Mercado mercado;
+
+	public Lista() {
+	}
+
+	public Lista(String nome, Usuario usuario, Mercado mercado) {
+		this.nome = nome;
+		this.usuario = usuario;
+		this.mercado = mercado;
+	}
+
+	public void adicionarItem(Item item) {
+		this.precoTotal = this.precoTotal.add(item.getValor());
+		item.setLista(this);
+		this.listaItens.add(item);
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Mercado getMercado() {
+		return mercado;
+	}
+
+	public void setMercado(Mercado mercado) {
+		this.mercado = mercado;
+	}
+
+	public BigDecimal getPrecoTotal() {
+		return precoTotal;
+	}
+
+	public LocalDate getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public List<Item> getLista() {
+		return listaItens;
+	}
+
+}

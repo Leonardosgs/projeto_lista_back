@@ -1,0 +1,33 @@
+package br.com.listando.listando.service;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+
+import br.com.listando.listando.entities.Mercado;
+
+@SpringBootTest
+@ActiveProfiles("test")
+public class MercadoTests {
+	
+	@Autowired
+	private IServiceMercado service;
+	
+	private static Mercado m;
+	private static Mercado mCriado;
+	
+	@BeforeAll
+	public static void setup() {
+		
+		m = new Mercado();
+		m.setNome("Confiança");
+		
+		mCriado = new Mercado();
+		mCriado.setNome("Tauste");
+		mCriado.setId(2);
+		
+		
+	}
+	
+}
